@@ -1,2 +1,2 @@
-include ':app'
+include ':host_main'
 rootProject.name = "YangZaiSuperApp"
