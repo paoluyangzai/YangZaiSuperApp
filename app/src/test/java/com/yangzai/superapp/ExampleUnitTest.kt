@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.yangzai.superapp
 
 import org.junit.Test
 
