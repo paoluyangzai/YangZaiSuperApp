@@ -29,8 +29,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
-//        jvmTarget = "6.3"
+        jvmTarget = "17"
     }
 }
 
@@ -57,12 +56,12 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 publishing {
     //配置maven仓库
-    repositories {
-        maven {
-            //当前项目根目录
-            url = uri("$rootDir")
-        }
-    }
+//    repositories {
+//        maven {
+//            //当前项目根目录
+//            url = uri("$rootDir")
+//        }
+//    }
     publications {
         create<MavenPublication>("mavenJava") {
             artifact(sourcesJar)
