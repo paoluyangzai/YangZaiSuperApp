@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -40,4 +41,35 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+//必须配置main
+sourceSets {
+    create("main") {
+        java.srcDir("src/main/java")
+    }
+}
+//打包源码
+val sourcesJar by tasks.registering(Jar::class) {
+    //如果没有配置main会报错
+    from(sourceSets["main"].allSource)
+    archiveClassifier.set("sources")
+}
+publishing {
+    //配置maven仓库
+    repositories {
+        maven {
+            //当前项目根目录
+            url = uri("$rootDir/superutil")
+        }
+    }
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifact(sourcesJar)
+            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+            groupId = "com.yangzai.superapp" //groupId 随便取 , 这个是依赖库的组 id
+            artifactId = "superutil" //artifactId 随便取 , 依赖库的名称（jitpack 都不会使用到）
+            version = "1.0.0"
+        }
+
+    }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.yangzai.superapp"
     compileSdk = 34
 
     defaultConfig {
