@@ -54,22 +54,24 @@ val sourcesJar by tasks.registering(Jar::class) {
     from(sourceSets["main"].allSource)
     archiveClassifier.set("sources")
 }
-publishing {
-    //配置maven仓库
-    repositories {
-        maven {
-            //当前项目根目录
-            url = uri("$rootDir/repo")
-        }
-    }
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifact(sourcesJar)
-            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
-            groupId = "com.yangzai.superapp" //groupId 随便取 , 这个是依赖库的组 id
-            artifactId = "superutil" //artifactId 随便取 , 依赖库的名称（jitpack 都不会使用到）
-            version = "1.0.0"
-        }
 
+afterEvaluate {
+    publishing {
+        //配置maven仓库
+        repositories {
+            maven {
+                //当前项目根目录
+                url = uri("$rootDir/repo")
+            }
+        }
+        publications {
+            create<MavenPublication>("mavenJava") {
+                artifact(sourcesJar)
+                afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+                groupId = "com.yangzai.superapp" //groupId 随便取 , 这个是依赖库的组 id
+                artifactId = "superutil" //artifactId 随便取 , 依赖库的名称（jitpack 都不会使用到）
+                version = "1.0.0"
+            }
+        }
     }
 }
