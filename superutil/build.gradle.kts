@@ -1,3 +1,5 @@
+import org.gradle.model.internal.core.ModelNodes.withType
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -66,6 +68,7 @@ afterEvaluate {
         }
         publications {
             create<MavenPublication>("mavenJava") {
+                DuplicatesStrategy.EXCLUDE
                 artifact(sourcesJar)
                 afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
                 groupId = "com.yangzai.superapp" //groupId 随便取 , 这个是依赖库的组 id
