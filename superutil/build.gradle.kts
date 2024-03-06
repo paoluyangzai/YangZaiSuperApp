@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 
@@ -56,12 +56,12 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 publishing {
     //配置maven仓库
-//    repositories {
-//        maven {
-//            //当前项目根目录
-//            url = uri("$rootDir")
-//        }
-//    }
+    repositories {
+        maven {
+            //当前项目根目录
+            url = uri("$rootDir/superutil")
+        }
+    }
     publications {
         create<MavenPublication>("mavenJava") {
             artifact(sourcesJar)
