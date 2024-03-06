@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "YangZaiSuperApp"
 include(":app")
- 
+include(":superutil")
