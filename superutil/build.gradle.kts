@@ -59,7 +59,7 @@ publishing {
     repositories {
         maven {
             //当前项目根目录
-            url = uri("$rootDir/superutil")
+            url = uri("$rootDir/repo")
         }
     }
     publications {
