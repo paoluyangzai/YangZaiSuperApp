@@ -69,7 +69,9 @@ afterEvaluate {
         publications {
             create<MavenPublication>("mavenJava") {
                 artifact(sourcesJar)
-                afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+                afterEvaluate {
+                    artifact(tasks.getByName("bundleReleaseAar"))
+                }
                 groupId = "com.yangzai.superapp" //groupId 随便取 , 这个是依赖库的组 id
                 artifactId = "superutil" //artifactId 随便取 , 依赖库的名称（jitpack 都不会使用到）
                 version = "1.0.0"

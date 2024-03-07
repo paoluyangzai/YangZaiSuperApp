@@ -1,4 +1,4 @@
-package com.yangzai.superapp.ui
+package com.yangzai.superutil
 
 /**
  *@author 许阳
